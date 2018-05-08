@@ -1,5 +1,6 @@
 #!/bin/bash
 source $HOME/bin/envsetup.sh
-check_requirements
-type_checker $1 # decide suffix
-avconv -i $1 -codec copy $new_filename
+check_requirements ffmpeg
+check_filename "$*"
+check_suffix $tmp_filename # decide suffix
+ffmpeg -i $tmp_filename -codec copy $new_filename
